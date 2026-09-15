@@ -54,9 +54,22 @@ It allows save, edit, delete, and search the data with `SQL`.
 
 WSL (install Windows subsystem for Linux )
 
+#### Docker Command:
+```bash
+docker --version
+```
+
 #### Download PostgreSQL image
+- image: system package that is already existed in docker repository
+
+```bash
+docker pull postgres:latest
+```
 
 #### Execute Container
+```bash
+docker run --name my-postgres_PASSWORD-123456 -p 5432:5432 -d postgres:latest
+```
 
 #### Connect to DBeaver
 

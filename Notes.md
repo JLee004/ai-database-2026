@@ -7,6 +7,14 @@ https://wikidocs.net/book/18202
 https://wikidocs.net/book/18203
 
 
+<다운로드>
+- 파이썬
+- DBeaver
+- Docker
+- VS Code
+- Node
+- Postgresql
+
 *Download Python: click add python.exe to PATH & use admin privileges -> customize install -> unclick documentation(?) -> click install python for all users -> disable path length limit (window만 260 character limit 있음) 
 *다운로드 확인: D드라이브 파일만든곳에 terminal 열고, "code ." 
 VS code에서 터미널 열고 python 치고 확인.
@@ -39,6 +47,10 @@ Docker:
 
 
 
--------
+-----------------------
 <SQL>
-database 는 대소문자 구분 없음
+- database 는 대소문자 구분 없음
+
+- Insert 한 후 꼭 updated row 가 1이 됐는지 확인
+
+- dBeaver는 열 사이에 공백이 없어야 실행됨. 한 prompt는 enter 없이.

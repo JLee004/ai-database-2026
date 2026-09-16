@@ -55,11 +55,13 @@ It allows save, edit, delete, and search the data with `SQL`.
 WSL (install Windows subsystem for Linux )
 
 #### Docker Command:
+
 ```bash
 docker --version
 ```
 
 #### Download PostgreSQL image
+
 - image: system package that is already existed in docker repository
 
 ```bash
@@ -67,6 +69,7 @@ docker pull postgres:latest
 ```
 
 #### Execute Container
+
 ```bash
 docker run --name my-postgres_PASSWORD-123456 -p 5432:5432 -d postgres:latest
 ```
@@ -162,3 +165,228 @@ where name = 'Don Bob';
 | DATE        |                  | 2026-09-15                |
 | TIMESTAMP   | Date with time   | 2026-09-15 16:00:20       |
 | JSONB       | JSON data        | {"name" : John Doe"}      |
+
+### Basic SQL
+
+The basic grammar in database
+
+#### CRUD - four basic functions
+
+
+|        | Meaning              | Query Command |
+| ------ | -------------------- | ------------- |
+| Create | Create data          | `INSERT`      |
+| Read   | Read and search data | `SELECT`      |
+| Update | Edit/change data     | `UPDATE`      |
+| Delete | Delete data          | `DELETE`      |
+
+EX: When making a student management program,
+
+- Student registration
+- Student list
+- Change student information
+- Delete student information
+  -> these are all columns needed.
+
+0. Check Table and Reset All
+
+```sql
+-- Check table
+select * from students s ;
+
+-- Reset all Table; Delete all
+-- truncate students;
+```
+
+1. INSERT
+
+```sql
+-- Add student information
+-- Do not use " " for string in query!! only ' '
+insert into students (name, age, email)
+values ('Jamie Simson', 20, 'js.exampel.com');
+
+-- Change column order --> Always match KEYS and VALUES
+insert into students (age, email, name)
+values (29, 'mj@gmail.com', 'Min Jun');
+
+-- Add multiple data
+insert into students (name, age, email)
+values ('Gil Soon', 20, 'gs.exampel.com'),
+ ('Gil Ja', 50, 'gj.exampel.com'),
+ ('Terry Loy', 30, 'gm.exampel.com');
+```
+
+2. SELECT (PART 1)
+
+- Retreival with SELECT query
+- ```sql
+
+  ```
+
+-- Retrieval only necessary data using Filtering
+select * from students s
+where s.age <30;
+
+select * from students s
+where s."name" = 'Jamie Smile';
+
+select * from students s
+where s.age = 21
+or s."name" = 'John Doe'
+
+- SELECT -[source](./Day2/practice02.sql)
+- Array
+- Ascending => ASC
+- Descending => DESC
+
+```sql
+ -- Order by array
+ select * from students s 
+  order by id desc;
+
+ select * from students s 
+  order by age asc;
+
+ -- Order with multiple conditions
+ select * from students s 
+  order by name asc, age asc;
+
+ -- Limit view count
+ select * from students s 
+  order by id desc 
+  limit 3;
+
+```
+
+3. UPDATE
+
+- Tips: Be careful updating query without Where clause
+
+4. DELETE
+
+- Tips: Be really careful deleting query without Where clause!
+
+```sql
+-- Delete table
+delete from students
+	where id = 33; -- **if ; is added, it delete all the rows!!!
+-- Please do not do:
+	--delete from student;
+drop table students ;
+```
+
+#### Null
+
+- Null means there's no value
+  (it doesn't mean 0 or no text '')
+
+#### Create Table  (Part 2)
+
+```sql
+CREATE TABLE students (
+id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, -- basic key(PK): NO duplicate allowed & NOT NULL.
+name VARCHAR(50) NOT NULL, -- Name cannot be NULL
+age INT, --age can be NULL
+email VARCHAR(100), -- can be NULL
+major VARCHAR(50), -- can be NULL
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 
+);
+```
+
+##### Null Query
+
+```sql
+insert into students (name, age, email, major)
+values ('Sung Yoo', 20, 'hugo@example.com', null);
+
+insert into students (name, age, email, major)
+values ('Sung Min', null, 'Smin@example.com', null);
+
+insert into students (name)
+values ('Choi Sik');
+```
+
+##### Null Retrieval Query
+
+```sql
+where column is null/ is not null
+```
+
+#### Table Design
+
+- means DB and table design
+- Table design: Logical design and Physical design
+- Choose column and data type
+- Basic/primary Key (PK) and Foreign key(FK) conditions
+- NOT NULL, UNIQUE, CHECK conditions
+- DEFAULT condition
+
+##### How to design Table?
+
+- Deciding the relationship of data to design a table including types of table (columns and rows).
+  --> What is a good table?
+- Unnecessary duplicates
+- Has a single title for each table
+- Has PK that distinguishes each row
+- FK connects relationship between tables
+- Uses limits/constraint to prevent adding wrong data
+- Uses structue for easily accessible to retrieval and making changes
+
+##### Exercise: Student Management System
+
+
+|                   | Details                         | Data type        |
+| ----------------- | ------------------------------- | ---------------- |
+| Student ID        |                                 | INT, BIGINT      |
+| Student Name      | Add String, Required property   | VARCHAR(n), TEXT |
+| Email             | String, or Null                 | VARCHAR(n), TEXT |
+| Age               | Numeric, limit to less than 150 | INT...           |
+| Major             | String                          | VARCHAR(n), TEXT |
+| Registration Date | yyyy-mm-dd hh:mm:ss             | DATE, TIMESTAMP  |
+
+- Exact number: Numeric,
+  long text: text, date: date, true/false: boolean
+
+#### Constraint
+
+1. Primary key (PK)
+
+Value that represents each row from table - **Unique & Not Null** (No duplicate, Not Null)
+
+##### Different Grammar of PK:
+PostgreSQL:
+```id int generated always as identity (auto number increment) 
+primary key (assign basic key)
+```
+MySQL: ```auto_increment```
+Oracle: ```identity```
+
+2. Foreign Key (FK): A column that references the primary key of another table.
+
+```plaintext
+Students
+ - id --> PK
+ - name
+
+Enrollment
+ - id --> PK
+ - studnets_id
+ - course_name
+```
+#### Create a table
+```sql
+--Create ERD Table
+create table enrollments (
+	id int generated always as identity primary key,
+	students_id int not null, 
+	course_name varchar(100) not null,
+	enrolled_at timestamp default current_timestamp,
+	constraint fk_enrollments_students
+		foreign key (students_id)
+		references students(id)
+```
+
+##### Entity Diagram
+![alt text](image-10.png)
+

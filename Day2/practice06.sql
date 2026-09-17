@@ -9,4 +9,16 @@ create table enrollments (
 		references students(id)
 );
 
-	
+--INSERT INTO products (name, price, stock, category)
+--VALUES
+--('키보드', 30000, 10, '컴퓨터주변기기'),
+
+
+insert into enrollments (students_id, course_name)
+values (4, 'psychology'),
+(5, 'psychology'),
+(2, 'psychology');
+
+select * from enrollments e ;
+
+delete from students ;

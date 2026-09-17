@@ -2,8 +2,6 @@
 
 AI Agentic Service Develop Database Repository
 
-## Day 1
-
 ### Postgre SQL
 
 Databas: a system managing collected data in a single space
@@ -292,6 +290,16 @@ email VARCHAR(100), -- can be NULL
 major VARCHAR(50), -- can be NULL
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- 
 );
+
+** ##### Different Grammar of PK: auto increment
+PostgreSQL:
+```id int generated always as identity (auto number increment) 
+primary key (assign basic key)
+```
+
+MySQL: ```auto_increment```
+Oracle: ```identity```
+
 ```
 
 ##### Null Query
@@ -354,14 +362,6 @@ where column is null/ is not null
 
 Value that represents each row from table - **Unique & Not Null** (No duplicate, Not Null)
 
-##### Different Grammar of PK:
-PostgreSQL:
-```id int generated always as identity (auto number increment) 
-primary key (assign basic key)
-```
-MySQL: ```auto_increment```
-Oracle: ```identity```
-
 2. Foreign Key (FK): A column that references the primary key of another table.
 
 ```plaintext
@@ -374,7 +374,9 @@ Enrollment
  - studnets_id
  - course_name
 ```
-#### Create a table
+
+#### Create table and Assign FK
+
 ```sql
 --Create ERD Table
 create table enrollments (
@@ -387,6 +389,47 @@ create table enrollments (
 		references students(id)
 ```
 
-##### Entity Diagram
+##### Entity Diagram - relationship of PK and FK
+
 ![alt text](image-10.png)
 
+#### 
+
+### Constaint
+
+- If a Column is PK, it will give an error when inserting data without it.
+- If one of the row in a column is empty, it cannot be NOT NULL. To fix this, insert all empty ones in the column then change to NOT NULL column.
+
+#### UNIQUE constraint
+
+:prevent duplicates
+
+#### CHECK constraint
+
+:prevents
+
+##### Add CHECK constraint:
+
+#### DEFAULT Constraint
+
+```sql
+created_at timestamp default current default current_timestamp
+```
+
+### Table Modeling
+
+| Relationship      | detail        | example                   |
+| ----------------- | ------------- | ------------------------- |
+| 1:multiple        | multiple rows | Student and enrollment    |
+| 1:1               |               | user and user information |
+| multiple:multiple |               | students and subjects     |
+- multiple:multiple relationship is hard to execute -> seperate into 1: multiple tables
+
+- Modeling Tool: ERD (Entity Relationship Diagram) Cloud
+
+![alt text](image-11.png)
+
+### JOIN
+
+
+### Transaction 

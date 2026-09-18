@@ -430,6 +430,34 @@ created_at timestamp default current default current_timestamp
 ![alt text](image-11.png)
 
 ### JOIN
-
+1. Inner Join = Join
+- Only give me rows where both tables have a match.
+- Check table relationship and join with PK and FK
+```sql
+select s.id "student id", s."name" "student name", s.email, s.major,
+	e.id "enrollment id", e.enrolled_at,
+	c.id "course id", c.title, c.instructor, c.hours 
+ from students s 
+join enrollments e 
+on s.id = e.student_id 
+join courses c 
+on c.id = e.course_id ;
+```
+2. Outer Join
+Retrieval even though a condition is not matched.
 
 ### Transaction 
+- When all tasks are successfully done -> Commit,
+when error occurs -> Rollback
+- ACID
+
+
+Table modeling — how to decide what tables you need
+Primary/foreign keys
+Conditions — WHERE, AND, OR, LIKE, NULL
+Constraints — PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL
+JOINs — especially INNER JOIN vs LEFT JOIN
+Aggregations — COUNT, SUM, AVG, GROUP BY, HAVING
+CRUD — SELECT, INSERT, UPDATE, DELETE
+
+[다음][text](readme2.md)

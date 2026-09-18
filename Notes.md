@@ -14,6 +14,7 @@ https://wikidocs.net/book/18203
 - VS Code
 - Node
 - Postgresql
+- VS Code Insiders
 
 *Download Python: click add python.exe to PATH & use admin privileges -> customize install -> unclick documentation(?) -> click install python for all users -> disable path length limit (window만 260 character limit 있음) 
 *다운로드 확인: D드라이브 파일만든곳에 terminal 열고, "code ." 
@@ -54,3 +55,17 @@ Docker:
 - Insert 한 후 꼭 updated row 가 1이 됐는지 확인
 
 - dBeaver는 열 사이에 공백이 없어야 실행됨. 한 prompt는 enter 없이.
+
+- OUTER JOIN : Left outer join/ Right outer join 뒤에 쓰는 table 기준!!!
+ex: Left outer join은 왼쪽 테이블 기준으로 오른쪽 테이블에 연결되지 않은 데이터도 나옴, Right outer join은 left outer join 과 반대
+
+- group by 는 select * 와 함께 사용 안됨.
+
+- Transaction: commit된 데이터는 장애가 발생해도 보존된다.
+- Manual commit 모드로 항상 바꾸고 시작
+- Rollback 중요! 데이터를 넣었을 때 오류뜨면 복구 과정이 중요하다.
+- Update 또는 Delete 전에 begin 쓰고 시작하기! 단, create table할때는 auto commit으로 하고 manual로 바꿔야함.
+- 한번 commit 한 것은 다시 roll back 안됨. 한번 roll back 된 것은 다시 commit 안됨.
+- 기억하기: Auto commit 상태에서 테이블 생성 --> manual commit --> begin, commit, rollback
+
+

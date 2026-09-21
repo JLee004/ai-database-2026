@@ -39,9 +39,44 @@ uvicorn main:app --reload --port 8000
 * --reload: automatically restart as soon as modified
  --port 8000: assign a port 
 
+cd {assign file directory}
 ![alt text]({0F15D944-4332-4B4F-B133-78BCBD5554C6}-1.png)
 
 ![alt text]({5F124814-FAE5-46DF-A1BC-854A08520D4E}-1.png)
+
+![alt text](image-12.png)  --> Click the link with ctrl key.
+
+![alt text](image-14.png)
+
+### Web Response Code
+- 200: OK
+- 404: client error
+- 500: internal server error
+
+### Swagger UI 
+- test page for FastAPI (provided automatically)
+- http(s):
+
+###
+- API's results = JSON type, Python's result is Dictionary
+- JSON은 "" 씀, Python은 '' 쓴다.
+
+### URL Path
+- 
+
+### HTTP(s) Method
+GET, POST, PATCH, PUT, DELETE
+- POST and PATCH : cleient should 
+
+### Requst
+- FastAPI, use pydantic package model 
+- JSON data는 Null, Python은 None 
+
+### HTTP Exception
+- 200 --> request successful, 201 --> creation successful
+- 403 --> not authorized, 404 --> no data
+- 500 --> server error
+
 
 
 

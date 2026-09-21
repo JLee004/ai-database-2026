@@ -68,4 +68,9 @@ ex: Left outer join은 왼쪽 테이블 기준으로 오른쪽 테이블에 연�
 - 한번 commit 한 것은 다시 roll back 안됨. 한번 roll back 된 것은 다시 commit 안됨.
 - 기억하기: Auto commit 상태에서 테이블 생성 --> manual commit --> begin, commit, rollback
 
+<Fast API>
+#### 
+- Terminal (When starting FastAPI, 2 python.exe will be starting)
+- URL 주소는 전부 Get method (post 사용 불가). Post method는 Swagger UI
+
 

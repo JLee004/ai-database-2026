@@ -1,3 +1,4 @@
+import uvicorn #Add when Debugging
 
 #main.py = FastAPI related
 from fastapi import FastAPI, HTTPException
@@ -40,6 +41,7 @@ def get_students():
     finally:
         cursor.close()    
         conn.close() #Always close DB connection regardless of exception
+
 
 # Retrieval one student
 @app.get('/students/{id}')
@@ -156,3 +158,14 @@ def delete_student(id: int):
     finally:
         cursor.close()
         conn.close()
+
+# Add when debugging (front and end)
+if __name__ == "__main__":
+    uvicorn.run(
+        "main_debug:app",
+        host="127.0.0.1",
+        port=8001,
+        reload=True,
+        log_level="debug"
+    )
+

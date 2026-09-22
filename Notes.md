@@ -5,7 +5,7 @@
 ## <links>
 https://wikidocs.net/book/18202
 https://wikidocs.net/book/18203
-
+https://www.erdcloud.com/myPage
 
 <다운로드>
 - 파이썬
@@ -27,6 +27,8 @@ VS code에서 터미널 열고 python 치고 확인.
 Python 디버깅없이 실행: ctrl + F5
 Jupyter 실행은: ctrl + enter
 VS code에서 ctrl + shift + v -> 미리보기
+Toggle/주석:  ctrl+shift on python
+Python F12 잘활용하기 (connection 확인 및 설명)
 
 <New Terms>
 Docker: 
@@ -72,5 +74,15 @@ ex: Left outer join은 왼쪽 테이블 기준으로 오른쪽 테이블에 연�
 #### 
 - Terminal (When starting FastAPI, 2 python.exe will be starting)
 - URL 주소는 전부 Get method (post 사용 불가). Post method는 Swagger UI
+
+** Tips: 
+- opening a terminal in the folder on VsCode  =  open the Folder > open terminal 
+![alt text](image-20.png)
+
+- Python code 적다가 error 뜨는데 잠깐 자리비울때 pass 적고 감
+
+- Python에도 commit & rollback 기능
+conn.commit & conn.rollback
+
 
 

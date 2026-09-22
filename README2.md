@@ -77,6 +77,31 @@ GET, POST, PATCH, PUT, DELETE
 - 403 --> not authorized, 404 --> no data
 - 500 --> server error
 
+### Structure of syncing database with FastAPI
 
+fastapi_postgres
 
+├── main.py          # FastAPI 웹 서버
 
+└── database.py      # PostgreSQL 연결
+
+1. Install psycopg : pip install psycopg[binary]
+![alt text](image-15.png)
+
+2. pip list to check all the package downloaded
+![alt text](image-16.png)
+
+3. share my development environment (python) with other people.
+
+4. re-install development environment
+![alt text](image-17.png)
+-> python version should be matched. 
+
+* It's easier to seperate the py for team work. 
+![alt text](image-19.png)
+
+### create database.py
+To connect with database, check the right information by checking dBeaver
+![alt text](image-18.png)
+
+### create main.py

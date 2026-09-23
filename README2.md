@@ -135,3 +135,14 @@ if__name__ == '__main__':
 * function check
 * spelling check
 * insert check
+
+### FastAPI additional functions
+1. Sync
+- ORM (object-relational mapping): can do DB CRUD with soley python coding without SQL query.
+- install SQLAlchemy package
+2. API Server
+- Managing Exceptions
+- API server structure
+- verification (login and auth)
+- JWT (Json Web Token) verification
+- Docker deployment
